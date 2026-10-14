@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v7.0.1
+
+      - name: setup python
+        uses: actions/setup-python@v7.0.0
+        with:
+          python-version: 3.12
+
+      - name: install libraries
+        run: pip install -r requirement.txt 
+
+      - name: syntax check
+        run: python -m py_compile main.py
+          
