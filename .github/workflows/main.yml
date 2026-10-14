@@ -37,7 +37,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: docker push
-        run: docker push -t ghcr.io/jaltuaymi/classifier-api:latest 
+        run: docker push ghcr.io/jaltuaymi/classifier-api:latest 
 
 
 
