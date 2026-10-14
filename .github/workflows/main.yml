@@ -18,7 +18,7 @@ jobs:
           python-version: 3.12
 
       - name: install libraries
-        run: pip install -r requirement.txt 
+        run: pip install -r requirements.txt 
 
       - name: syntax check
         run: python -m py_compile main.py
