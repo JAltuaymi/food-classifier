@@ -33,6 +33,4 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: docker push
-        run: docker push ghcr.io/jaltuaymi/classifier-api:latest
           
