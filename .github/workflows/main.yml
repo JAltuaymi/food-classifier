@@ -22,4 +22,17 @@ jobs:
 
       - name: syntax check
         run: python -m py_compile main.py
+
+      - name: docker build
+        run: docker build -t ghcr.io/jaltuaymi/classifier-api:latest .
+
+      - name: docker login
+        uses: docker/login-action@v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: docker push
+        run: docker push ghcr.io/jaltuaymi/classifier-api:latest
           
