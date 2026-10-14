@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+permissions:
+  contents: read
+  packages: write
 
 jobs:
   build:
@@ -32,5 +35,12 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: docker push
+        run: docker push -t ghcr.io/jaltuaymi/classifier-api:latest 
+
+
+
+      
 
           
