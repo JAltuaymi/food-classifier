@@ -36,8 +36,8 @@ def predict_label(image):
         conf = logits.softmax(dim=1).max()
 
     if conf < 0.30:
-        return 'image does not have food or confidence less than 30%'
-    return f'food name = {class_name} ,confidence = {(conf*100):.2f}%'
+        return 'image does not have food or confidence less than 30%.'
+    return f'food name = {class_name} ,confidence = {(conf*100):.2f}%.'
 
 
 @app.get("/")
