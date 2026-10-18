@@ -41,6 +41,18 @@ jobs:
       - name: docker push
         run: docker push ghcr.io/jaltuaymi/classifier-api:latest 
 
+      - name: ec2 deploy
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            sudo docker push ghcr.io/jaltuaymi/classifier-api:latest
+            sudo docker rm -f classifier-api || true
+            sudo docker run -dp 8000:8000 --name classifier-api ghcr.io/jaltuaymi/classifier-api:latest
+            sudo docker image prune -af
+
 
 
       
